@@ -1,5 +1,8 @@
-// These challenges are derived from a book containing a myriad of problems and solutions. All challenges are solved (sometimes poorly) alone initially and then researched and confirmed by the book afterwards, in order to learn the most effecient solution.
-
+// These challenges are derived from a book containing
+// a myriad of problems and solutions. All challenges
+// are solved (sometimes poorly) alone initially and
+// then researched and confirmed by the book afterwards,
+// in order to learn the most effecient solution.
 
 import UIKit
 
