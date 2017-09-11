@@ -1,4 +1,5 @@
-//: Playground - noun: a place where people can play
+// These challenges are derived from a book containing a myriad of problems and solutions. All challenges are solved (sometimes poorly) alone initially and then researched and confirmed by the book afterwards, in order to learn the most effecient solution.
+
 
 import UIKit
 
@@ -44,6 +45,29 @@ extension String {
 "Hello World".myContains("Swift is Fun!")
 
 // Challenge 5: Write a function that accepts a string, and returns how many times a specific character appears, taking case into account.
+
+func characterInStringCount(string: String, character: Character) -> Int {
+  var charCount = 0
+  
+  if string.contains(character) {
+    for letter in string {
+      if letter == "o" {
+        charCount += 1
+      }
+    }
+  }
+  
+    return charCount
+}
+
+characterInStringCount(string: "How now brown cow", character: "o")
+
+// Challenge 6: Write a function that accepts a string as its input, and returns the same string just with duplicate letters removed.
+
+
+
+
+
 
 
 
