@@ -100,24 +100,61 @@ altDuplicateCharacterRemover(string: "Anchorman")
 
 //Challenge 7: Write a function that returns a string with any consecutive spaces replaced with a single space.
 
-func spaceCorrect(string: String) -> String {
-  var first: Character
-  var next: Character
-  
-  for char in string.characters {
+// first attempt and incorrect
 
-    if char == " " {
-      first = char
+func spaceCorrect(string: String) -> String {
+  var correctedString = string.replacingOccurrences(of: "   ", with: " ")
+  correctedString = string.replacingOccurrences(of: "  ", with: " ")
+  return correctedString
+}
+
+// Fastest, most verbose, and correct
+
+func bruteSpaceCorrect(string: String) -> String {
+  var seenSpace = false
+  var strCopy = ""
+  
+  for letter in string.characters {
+    if letter == " " {
+      if seenSpace { continue }
+      seenSpace = true
+    } else {
+      seenSpace = false
     }
+    strCopy.append(letter)
   }
-  return ""
+  return strCopy
+}
+
+// More Succint and correct, but slower by ≈ 50%
+
+func succintSpaceCorrect(string: String) -> String {
+  return string.replacingOccurrences(of: " +", with: " ", options: .regularExpression, range: nil)
 }
 
 spaceCorrect(string: "So   many  spaces")
 spaceCorrect(string: "Appropriate spacing")
 
+bruteSpaceCorrect(string: "This  would  have  two  spaces  betwixt  the  words")
+bruteSpaceCorrect(string: "Alex Marcel     Blanchard")
+
+succintSpaceCorrect(string: "Soooo    many    spaces  !!")
+succintSpaceCorrect(string: "Double  Spaced, Triple   Spaced")
 
 
+// Challenge 8: Write a function that accepts two strings, and returns true if one string is rotation of the other, taking letter case into account.
+
+func stringRotationCheck(str1: String, str2: String) -> Bool {
+  guard str1.count == str2.count else {return false}
+  let str1Copy = str1 + str1
+  let str2Copy = str2 + str2
+  
+  return str2Copy.contains(str1) && str1Copy.contains(str2)
+}
+
+stringRotationCheck(str1: "abc", str2: "cab")
+stringRotationCheck(str1: "abc", str2: "bac")
+stringRotationCheck(str1: "abc", str2: "abca")
 
 
 
