@@ -59,7 +59,9 @@ func fibonacciEvenValueSumAdder(cap: Double) -> Double {
 
 
 
-
+func primeFinder() -> Double {
+  return 0
+}
 
 
 
