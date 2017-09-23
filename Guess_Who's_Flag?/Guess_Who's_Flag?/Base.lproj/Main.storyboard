@@ -9,39 +9,44 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--MainVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Guess_Who_s_Flag_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="MainVC" id="BYZ-38-t0r" customClass="ViewController" customModule="Guess_Who_s_Flag_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZ5-VC-0kL">
-                                <rect key="frame" x="87.5" y="128" width="200" height="100"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tG9-0z-v7j">
+                                <rect key="frame" x="87" y="105" width="200" height="100"/>
                                 <state key="normal" image="us"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rRf-Ux-6eq">
-                                <rect key="frame" x="87.5" y="334" width="200" height="100"/>
-                                <state key="normal" image="uk"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vx8-lT-Jfz">
+                                <rect key="frame" x="87" y="252" width="200" height="100"/>
+                                <state key="normal" image="us"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLJ-a5-MVo">
-                                <rect key="frame" x="87.5" y="504" width="200" height="100"/>
-                                <state key="normal" image="france"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O1B-Sr-pY4">
+                                <rect key="frame" x="87" y="406" width="200" height="100"/>
+                                <state key="normal" image="us"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.37952934720344411" green="0.83595979948083066" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="rRf-Ux-6eq" firstAttribute="top" secondItem="fZ5-VC-0kL" secondAttribute="bottom" constant="106" id="5Ke-k5-LJn"/>
-                            <constraint firstItem="fZ5-VC-0kL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="64" id="6St-iz-lvx"/>
-                            <constraint firstItem="fZ5-VC-0kL" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="LJs-CE-TkP"/>
-                            <constraint firstItem="zLJ-a5-MVo" firstAttribute="centerX" secondItem="rRf-Ux-6eq" secondAttribute="centerX" id="k7x-25-vtk"/>
-                            <constraint firstItem="zLJ-a5-MVo" firstAttribute="top" secondItem="rRf-Ux-6eq" secondAttribute="bottom" constant="70" id="l3C-kf-hDa"/>
-                            <constraint firstItem="rRf-Ux-6eq" firstAttribute="centerX" secondItem="fZ5-VC-0kL" secondAttribute="centerX" id="yy6-Fr-YGA"/>
+                            <constraint firstItem="O1B-Sr-pY4" firstAttribute="top" secondItem="Vx8-lT-Jfz" secondAttribute="bottom" constant="54" id="6Pk-ZB-VRY"/>
+                            <constraint firstItem="Vx8-lT-Jfz" firstAttribute="top" secondItem="tG9-0z-v7j" secondAttribute="bottom" constant="47" id="GSm-11-I83"/>
+                            <constraint firstItem="Vx8-lT-Jfz" firstAttribute="centerX" secondItem="tG9-0z-v7j" secondAttribute="centerX" id="Zr7-ag-8Et"/>
+                            <constraint firstItem="O1B-Sr-pY4" firstAttribute="centerX" secondItem="Vx8-lT-Jfz" secondAttribute="centerX" id="hev-6k-91b"/>
+                            <constraint firstItem="tG9-0z-v7j" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="kQu-hS-VRP"/>
+                            <constraint firstItem="tG9-0z-v7j" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="41" id="mQj-Gy-cyG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="iGj-fk-MkP"/>
+                    <connections>
+                        <outlet property="button1" destination="tG9-0z-v7j" id="7Bs-BP-jru"/>
+                        <outlet property="button2" destination="Vx8-lT-Jfz" id="SOc-J5-aaW"/>
+                        <outlet property="button3" destination="O1B-Sr-pY4" id="Q6g-62-VqW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -67,8 +72,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="france" width="200" height="100"/>
-        <image name="uk" width="200" height="100"/>
         <image name="us" width="200" height="100"/>
     </resources>
 </document>
