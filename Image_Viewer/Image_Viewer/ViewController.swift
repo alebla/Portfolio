@@ -13,6 +13,11 @@ class ViewController: UITableViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    // iOS 11 preference
+    navigationController?.navigationBar.prefersLargeTitles = true
+    
+    // The name of our humble app
+    title = "Image Viewer"
     
     // Create FileManager constant that points to the Bundle directory,
     // then insert its contents into an array
@@ -37,7 +42,16 @@ class ViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
+    // 1: try loading the "Detail" vc and typecast to a DetailViewController
+    if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+      // 2: success! Set its selected image property
+      vc.selectedImage = pictures[indexPath.row]
+      
+      // 3: push it onto navigation stack
+      navigationController?.pushViewController(vc, animated: true)
+      // 4: Allow the loaded/pushed vc to hide top bar on push
+      // vc.navigationController?.hidesBarsOnTap = true ** Moved to DetailVC
+    }
   }
 }
 

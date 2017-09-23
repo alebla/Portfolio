@@ -14,7 +14,28 @@ class DetailViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    navigationItem.largeTitleDisplayMode = .never
+    
+    if let image = selectedImage {
+      title = image
+      
+      imageView.image = UIImage(named: image)
+    }
   }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    navigationController?.hidesBarsOnTap = true
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    navigationController?.hidesBarsOnTap = false
+  }
+  // iPhone X 
+//  override func prefersHomeIndicatorAutoHidden() -> Bool {
+//    return navigationController!.hidesBarsOnTap
+//  }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
