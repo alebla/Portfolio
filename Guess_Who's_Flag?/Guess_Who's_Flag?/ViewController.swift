@@ -22,27 +22,33 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    flags += ["Estonia", "France", "Germany", "Ireland", "Italy", "Monaco", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"]
-
-    
-    button1.layer.borderWidth = 3
-    button2.layer.borderWidth = 2
-    button3.layer.borderWidth = 2
-    
-    button1.layer.borderColor = UIColor.lightGray.cgColor
-    button2.layer.borderColor = UIColor.lightGray.cgColor
-    button3.layer.borderColor = UIColor.lightGray.cgColor
-    
-    flags = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: flags) as! [String]
+    populateFlags()
+    buildUI()
     askQuestion()
   }
   
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
+  @IBAction func buttonPressed(_ sender: UIButton) {
+    var _title: String
+    
+    switch sender.tag == correctAnswer {
+    case true:
+      _title = "Correct!"
+      score += 1
+      break
+    case false:
+      _title = "Wrong!"
+      score -= 1
+      break
+    }
+    
+    let ac = UIAlertController(title: _title, message: "Your score is \(score)", preferredStyle: .alert)
+    let aa = UIAlertAction(title: "Continue", style: .default, handler: askQuestion)
+    ac.addAction(aa)
+    present(ac, animated: true)
   }
   
-  func askQuestion() {
+  func askQuestion(action: UIAlertAction! = nil) {
+    shuffleFlags()
     button1.setImage(UIImage(named: flags[0]), for: .normal)
     button2.setImage(UIImage(named: flags[1]), for: .normal)
     button3.setImage(UIImage(named: flags[2]), for: .normal)
@@ -51,7 +57,22 @@ class ViewController: UIViewController {
     
   }
   
+  func populateFlags() {
+    flags += ["Estonia", "France", "Germany", "Ireland", "Italy", "Monaco", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"]
+  }
+  
   func shuffleFlags() {
+    flags = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: flags) as! [String]
+  }
+  
+  func buildUI() {
+    button1.layer.borderWidth = 3
+    button2.layer.borderWidth = 3
+    button3.layer.borderWidth = 3
+    
+    button1.layer.borderColor = UIColor.darkGray.cgColor
+    button2.layer.borderColor = UIColor.darkGray.cgColor
+    button3.layer.borderColor = UIColor.darkGray.cgColor
   }
 // *** Need to work on this later, A means to populating the flags by checking the bundle
 //  func populateFlagsArray(flags: [String]) {
