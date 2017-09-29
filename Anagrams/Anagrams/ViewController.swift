@@ -15,7 +15,15 @@ class ViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    populateAllWords()
+//    populateAllWords()
+    if let startWordsPath = Bundle.main.path(forResource: "start", ofType: "txt") {
+      if let startWords = try? String(contentsOfFile: startWordsPath) {
+        allWords = startWords.components(separatedBy: "\n")
+        print(allWords)
+      }
+    } else {
+      allWords = ["silkworm"]
+    }
     startGame()
   }
   

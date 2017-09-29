@@ -22,7 +22,7 @@
 		37517A001F7DFE660076B1E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37517A031F7DFE660076B1E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		37517A051F7DFE660076B1E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		37517A0E1F7E0E8D0076B1E0 /* start.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
+		37517A0F1F7E10F90076B1E0 /* start.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +61,7 @@
 				37517A001F7DFE660076B1E0 /* Assets.xcassets */,
 				37517A021F7DFE660076B1E0 /* LaunchScreen.storyboard */,
 				37517A051F7DFE660076B1E0 /* Info.plist */,
-				37517A0E1F7E0E8D0076B1E0 /* start.txt */,
+				37517A0F1F7E10F90076B1E0 /* start.txt */,
 			);
 			path = Anagrams;
 			sourceTree = "<group>";
