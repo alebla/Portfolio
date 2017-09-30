@@ -15,8 +15,29 @@ class ViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    buildUI()
     populateAllWords()
     startGame()
+  }
+  
+  func buildUI() {
+    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
+  }
+  
+  @objc func promptForAnswer() {
+    let ac = UIAlertController(title: "Make a word", message: nil, preferredStyle: .alert)
+    ac.addTextField(configurationHandler: nil)
+    
+    let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned self, ac] (action: UIAlertAction) in
+      let answer = ac.textFields![0]
+      self.submitAnswer(answer.text)
+    }
+    ac.addAction(submitAction)
+    present(ac, animated: true)
+  }
+  
+  func submitAnswer(_ answer: String?) {
+    
   }
   
   func populateAllWords() {
