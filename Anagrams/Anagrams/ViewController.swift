@@ -30,14 +30,69 @@ class ViewController: UITableViewController {
     
     let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned self, ac] (action: UIAlertAction) in
       let answer = ac.textFields![0]
-      self.submitAnswer(answer.text)
+      self.submit(answer.text)
     }
     ac.addAction(submitAction)
     present(ac, animated: true)
   }
   
-  func submitAnswer(_ answer: String?) {
+  func submit(_ answer: String?) {
+    let errorTitle: String
+    let errorMessage: String
     
+    if let answer = answer?.lowercased() {
+      if isPossible(answer) {
+        if isDuplicate(answer) {
+          if isReal(answer) {
+            usedWords.insert(answer, at: 0)
+            
+            let indexPath = IndexPath(row: 0, section: 0)
+            tableView.insertRows(at: [indexPath], with: .automatic)
+            return
+          } else {
+            errorTitle   = "Real Fake Words"
+            errorMessage = "The answer was not a valid word."
+          }
+        } else {
+          errorTitle   = "Duplicate"
+          errorMessage = "You tried that already!"
+        }
+      } else {
+        errorTitle   = "Not an anagram"
+        errorMessage = "Try again. Remeber, letters can only be used once."
+      }
+    } else {
+      errorTitle   = "Nil Input"
+      errorMessage = "The input was nil."
+    }
+    
+    let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
+    ac.addAction(UIAlertAction(title: "OK", style: .default))
+    present(ac, animated: true)
+  }
+  
+  func isPossible(_ answer: String) -> Bool {
+    var tempWord = title!.lowercased()
+    
+    for letter in answer {
+      if let pos = tempWord.range(of: String(letter)) {
+        tempWord.remove(at: pos.lowerBound)
+      } else {
+        return false
+      }
+    }
+    return true
+  }
+  
+  func isDuplicate(_ answer: String) -> Bool {
+    return !usedWords.contains(answer)
+  }
+  
+  func isReal(_ answer: String) -> Bool {
+    let checker = UITextChecker()
+    let range = NSMakeRange(0, answer.utf16.count)
+    let mispelledLocation = checker.rangeOfMisspelledWord(in: answer, range: range, startingAt: 0, wrap: false, language: "en")
+    return mispelledLocation.location == NSNotFound
   }
   
   func populateAllWords() {
