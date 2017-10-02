@@ -41,29 +41,35 @@ class ViewController: UITableViewController {
     let errorMessage: String
     
     if let answer = answer?.lowercased() {
-      if isPossible(answer) {
-        if isDuplicate(answer) {
-          if isReal(answer) {
-            usedWords.insert(answer, at: 0)
-            
-            let indexPath = IndexPath(row: 0, section: 0)
-            tableView.insertRows(at: [indexPath], with: .automatic)
-            return
+      // Disallow words less than 3 letters
+      if answer.count > 2 {
+        if isPossible(answer) {
+          if isDuplicate(answer) {
+            if isReal(answer) {
+              usedWords.insert(answer, at: 0)
+              
+              let indexPath = IndexPath(row: 0, section: 0)
+              tableView.insertRows(at: [indexPath], with: .automatic)
+              return
+            } else {
+              errorTitle   = "Real Fake Words"
+              errorMessage = "The answer was not a valid word."
+            }
           } else {
-            errorTitle   = "Real Fake Words"
-            errorMessage = "The answer was not a valid word."
+            errorTitle   = "Duplicate"
+            errorMessage = "You tried that already!"
           }
         } else {
-          errorTitle   = "Duplicate"
-          errorMessage = "You tried that already!"
+          errorTitle   = "Not an anagram"
+          errorMessage = "Try again. Remeber, letters can only be used once."
         }
       } else {
-        errorTitle   = "Not an anagram"
-        errorMessage = "Try again. Remeber, letters can only be used once."
+        errorTitle   = "Nil Input"
+        errorMessage = "The input was nil."
       }
     } else {
-      errorTitle   = "Nil Input"
-      errorMessage = "The input was nil."
+      errorTitle = "Not Allowed"
+      errorMessage = "Answer must not be shorter than 3 letters"
     }
     
     let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
