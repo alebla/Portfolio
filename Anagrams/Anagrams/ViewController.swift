@@ -64,12 +64,12 @@ class ViewController: UITableViewController {
           errorMessage = "Try again. Remeber, letters can only be used once."
         }
       } else {
-        errorTitle   = "Nil Input"
-        errorMessage = "The input was nil."
+        errorTitle = "Not Allowed"
+        errorMessage = "Answer must not be shorter than 3 letters"
       }
     } else {
-      errorTitle = "Not Allowed"
-      errorMessage = "Answer must not be shorter than 3 letters"
+      errorTitle   = "Nil Input"
+      errorMessage = "The input was nil."
     }
     
     let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
