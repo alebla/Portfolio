@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		370899CA1F871CC000DAD791 /* Swifty_JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370899C91F871CC000DAD791 /* Swifty_JSON.swift */; };
+		370899CC1F873AD700DAD791 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370899CB1F873AD700DAD791 /* DetailViewController.swift */; };
 		37443AAE1F85E91100E98E8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37443AAD1F85E91100E98E8D /* AppDelegate.swift */; };
 		37443AB01F85E91100E98E8D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37443AAF1F85E91100E98E8D /* ViewController.swift */; };
 		37443AB31F85E91100E98E8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37443AB11F85E91100E98E8D /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		370899C91F871CC000DAD791 /* Swifty_JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swifty_JSON.swift; sourceTree = "<group>"; };
+		370899CB1F873AD700DAD791 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		37443AAA1F85E91100E98E8D /* Whitehouse Petitions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Whitehouse Petitions.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37443AAD1F85E91100E98E8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37443AAF1F85E91100E98E8D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				37443AAD1F85E91100E98E8D /* AppDelegate.swift */,
 				37443AAF1F85E91100E98E8D /* ViewController.swift */,
 				37443AB11F85E91100E98E8D /* Main.storyboard */,
+				370899CB1F873AD700DAD791 /* DetailViewController.swift */,
 				37443AB41F85E91100E98E8D /* Assets.xcassets */,
 				37443AB61F85E91100E98E8D /* LaunchScreen.storyboard */,
 				37443AB91F85E91100E98E8D /* Info.plist */,
@@ -142,6 +145,7 @@
 				37443AB01F85E91100E98E8D /* ViewController.swift in Sources */,
 				370899CA1F871CC000DAD791 /* Swifty_JSON.swift in Sources */,
 				37443AAE1F85E91100E98E8D /* AppDelegate.swift in Sources */,
+				370899CC1F873AD700DAD791 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

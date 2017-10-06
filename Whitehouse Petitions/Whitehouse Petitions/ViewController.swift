@@ -9,10 +9,40 @@
 import UIKit
 
 class ViewController: UITableViewController {
-  var petitions = [String]()
+  var petitions = [[String: String]]()
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    loadJSON()
+  }
+  
+  //MARK: JSON Parsing
+  func loadJSON() {
+    let urlString = "https://api.whitehouse.gov/v1/petitions.json?limit=100"
+    
+    if let url = URL(string: urlString) {
+      if let data = try? String(contentsOf: url) {
+        let json = JSON.parse(data)
+        
+        if json["metadata"]["responseInfo"]["status"].intValue == 200 {
+          parse(json: json)
+        }
+      }
+    }
+    
+  }
+  
+  func parse(json: JSON) {
+    for result in json["results"].arrayValue {
+      let title = result["title"].stringValue
+      let body = result["body"].stringValue
+      let sigCount = result["signatureCount"].stringValue
+      let sigNeeded = result["signaturesNeeded"].stringValue
+      let obj = ["title": title, "body": body, "sigCount": sigCount, "sigNeeded": sigNeeded]
+      
+      petitions.append(obj)
+    }
+    tableView.reloadData()
   }
   
   //MARK: TableView Methods
@@ -23,9 +53,16 @@ class ViewController: UITableViewController {
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-    cell.textLabel?.text = "Title goes here"
-    cell.detailTextLabel?.text = "Subtitle goes here"
+    let petition = petitions[indexPath.row]
+    cell.textLabel?.text = petition["title"]
+    cell.detailTextLabel?.text = petition["body"]
     return cell
+  }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let vc = DetailViewController()
+    vc.detailItem = petitions[indexPath.row]
+    navigationController?.pushViewController(vc, animated: true)
   }
 }
 
