@@ -23,6 +23,8 @@ class DetailViewController: UIViewController {
     
     guard detailItem != nil else { return }
     
+    title = detailItem["Title"]
+    
     if let body = detailItem["body"] {
       var html = "<html>"
       html += "<head>"

@@ -14,6 +14,8 @@ class ViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     loadJSON()
+    
+    title = "US Whitehouse Petitions"
   }
   
   //MARK: JSON Parsing
