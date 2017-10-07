@@ -31,6 +31,8 @@ class ViewController: UIViewController {
       btn.addTarget(self, action: #selector(letterTapped), for: .touchUpInside)
     }
     
+    loadLevel()
+    
   }
   
   //MARK: UI Functions
@@ -42,11 +44,11 @@ class ViewController: UIViewController {
     
     if let levelFilePath = Bundle.main.path(forResource: "level\(level)", ofType: "txt") {
       if let levelContents = try? String(contentsOfFile: levelFilePath) {
-        var lines = levelContents.components(separatedBy:"\n")
+        var lines = levelContents.components(separatedBy: "\n")
         lines = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: lines) as! [String]
         
         for (index, line) in lines.enumerated() {
-          let parts = line.components(separatedBy: ":")
+          let parts = line.components(separatedBy: ": ")
           let answer = parts[0]
           let clue = parts[1]
           
@@ -59,9 +61,19 @@ class ViewController: UIViewController {
           let bits = answer.components(separatedBy: "|")
           letterBits += bits
         }
+      } else { print("contents of file failed") }
+    } else { print("path for resource failed") }
+    
+    cluesLabel.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
+    answersLabel.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
+    
+    letterBits = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: letterBits) as! [String]
+    
+    if letterBits.count == letterButtons.count {
+      for i in 0 ..< letterBits.count {
+        letterButtons[i].setTitle(letterBits[i], for: .normal)
       }
-    }
-    // Now configure the buttons and labels
+    } else { print("counts are off") }
   }
   
   @objc func letterTapped(_ btn: UIButton) {
