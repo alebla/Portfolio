@@ -15,7 +15,7 @@ class ViewController: UITableViewController {
     super.viewDidLoad()
     loadJSON()
     
-    title = "US Whitehouse Petitions"
+    title = "Petitions"
   }
   
   //MARK: JSON Parsing
