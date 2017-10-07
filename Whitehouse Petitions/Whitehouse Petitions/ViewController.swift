@@ -19,6 +19,7 @@ class ViewController: UITableViewController {
   }
   
   //MARK: JSON Parsing
+  
   func loadJSON() {
     let urlString = "https://api.whitehouse.gov/v1/petitions.json?limit=100"
     
@@ -28,9 +29,9 @@ class ViewController: UITableViewController {
         
         if json["metadata"]["responseInfo"]["status"].intValue == 200 {
           parse(json: json)
-        }
-      }
-    }
+        } else { showErrorAlert(title: "JSON Error", message: "Something is wrong with the json data.") }
+      } else { showErrorAlert(title: "URL Error", message: "The provided url is corrupted.") }
+    }else { showErrorAlert(title: "Improper String", message: "The string provided is not in proper URL format.") }
     
   }
   
@@ -65,6 +66,14 @@ class ViewController: UITableViewController {
     let vc = DetailViewController()
     vc.detailItem = petitions[indexPath.row]
     navigationController?.pushViewController(vc, animated: true)
+  }
+  
+  //MARK: Error Handling
+  
+  func showErrorAlert(title: String, message: String) {
+    let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    ac.addAction(UIAlertAction(title: "OK", style: .default))
+    present(ac, animated: true)
   }
 }
 
