@@ -19,7 +19,11 @@ class ViewController: UIViewController {
   var activatedButtons = [UIButton]()
   var solutions = [String]()
   
-  var score = 0
+  var score = 0 {
+    didSet {
+      scoreLabel.text! = "Score: \(score)"
+    }
+  }
   var level = 1
   
   override func viewDidLoad() {
@@ -71,9 +75,17 @@ class ViewController: UIViewController {
     
     if letterBits.count == letterButtons.count {
       for i in 0 ..< letterBits.count {
+        letterButtons[i].isHidden = false
         letterButtons[i].setTitle(letterBits[i], for: .normal)
       }
     } else { print("counts are off") }
+  }
+  
+  func levelUp(_ a: UIAlertAction) {
+    level += 1
+    solutions.removeAll(keepingCapacity: true)
+    
+    loadLevel()
   }
   
   //MARK: IBActions and user input methods
@@ -85,19 +97,37 @@ class ViewController: UIViewController {
   }
   
   @IBAction func submitTapped(_ sender: UIButton) {
-    if solutions.contains(currentAnswer.text!) {
-      score += 1
-      scoreLabel.text = "Score: \(score)"
+    if let solutionPosition = solutions.index(of: currentAnswer.text!) {
+      activatedButtons.removeAll()
+      
+      var splitAnswers = answersLabel.text!.components(separatedBy: "\n")
+      splitAnswers[solutionPosition] = currentAnswer.text!
+      answersLabel.text = splitAnswers.joined(separator: "\n")
+      
       currentAnswer.text = ""
-      activatedButtons = []
+      score += 1
       
-      
-    } else {
-      score -= 1
-      scoreLabel.text = "Score: \(score)"
-      showErrorAlert(title: "Wrong", message: "Please try again.")
-      clearTapped()
+      if score % 7 == 0 {
+        let ac = UIAlertController(title: "Well Done!!", message: "Ready for the next level?", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Next Level", style: .default, handler: levelUp))
+        present(ac, animated: true)
+      }
     }
+//    if solutions.contains(currentAnswer.text!) {
+//      score += 1
+//      scoreLabel.text = "Score: \(score)"
+//      currentAnswer.text = ""
+//      activatedButtons = []
+//
+//
+//
+//
+//    } else {
+//      score -= 1
+//      scoreLabel.text = "Score: \(score)"
+//      showErrorAlert(title: "Wrong", message: "Please try again.")
+//      clearTapped()
+//    }
   }
   
   @IBAction func clearTapped(_ sender: UIButton? = nil) {
@@ -106,6 +136,10 @@ class ViewController: UIViewController {
       btn.isHidden = false
     }
   }
+  
+  
+  
+  
 
   //MARK: Error Handling
   
