@@ -97,11 +97,15 @@ class ViewController: UIViewController {
   }
   
   @IBAction func submitTapped(_ sender: UIButton) {
+    // Search for the index location of the currentAnswer text in the solutions string array.
     if let solutionPosition = solutions.index(of: currentAnswer.text!) {
       activatedButtons.removeAll()
       
+      // Build the splitAnswers array of strings by separating the answersLabel string by "\n".
       var splitAnswers = answersLabel.text!.components(separatedBy: "\n")
+      // Use the index location of currentAnswer to set the currentAnswer text to the new location.
       splitAnswers[solutionPosition] = currentAnswer.text!
+      // Set ansersLabel text to the contents of the new splitAnswers array with "\n" as the separator.
       answersLabel.text = splitAnswers.joined(separator: "\n")
       
       currentAnswer.text = ""
@@ -109,26 +113,20 @@ class ViewController: UIViewController {
       
       if score % 7 == 0 {
         let ac = UIAlertController(title: "Well Done!!", message: "Ready for the next level?", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Next Level", style: .default, handler: levelUp))
+        ac.addAction(UIAlertAction(title: "Yes", style: .default, handler: levelUp))
         present(ac, animated: true)
       }
+    } else {
+        showErrorAlert(title: "Wrong", message: "Please try again.")
+        clearTapped()
     }
+  }
+
 //    if solutions.contains(currentAnswer.text!) {
 //      score += 1
 //      scoreLabel.text = "Score: \(score)"
 //      currentAnswer.text = ""
 //      activatedButtons = []
-//
-//
-//
-//
-//    } else {
-//      score -= 1
-//      scoreLabel.text = "Score: \(score)"
-//      showErrorAlert(title: "Wrong", message: "Please try again.")
-//      clearTapped()
-//    }
-  }
   
   @IBAction func clearTapped(_ sender: UIButton? = nil) {
     currentAnswer.text = ""
