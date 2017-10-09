@@ -76,17 +76,43 @@ class ViewController: UIViewController {
     } else { print("counts are off") }
   }
   
-  @objc func letterTapped(_ btn: UIButton) {
-    
-  }
+  //MARK: IBActions and user input methods
   
-  //MARK: IBActions
+  @objc func letterTapped(_ btn: UIButton) {
+   currentAnswer.text = currentAnswer.text! + btn.titleLabel!.text!
+    activatedButtons.append(btn)
+    btn.isHidden = true
+  }
   
   @IBAction func submitTapped(_ sender: UIButton) {
+    if solutions.contains(currentAnswer.text!) {
+      score += 1
+      scoreLabel.text = "Score: \(score)"
+      currentAnswer.text = ""
+      activatedButtons = []
+      
+      
+    } else {
+      score -= 1
+      scoreLabel.text = "Score: \(score)"
+      showErrorAlert(title: "Wrong", message: "Please try again.")
+      clearTapped()
+    }
   }
   
-  @IBAction func clearTapped(_ sender: UIButton) {
+  @IBAction func clearTapped(_ sender: UIButton? = nil) {
+    currentAnswer.text = ""
+    for btn in activatedButtons {
+      btn.isHidden = false
+    }
   }
+
+  //MARK: Error Handling
   
+  func showErrorAlert(title: String, message: String) {
+    let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    ac.addAction(UIAlertAction(title: "OK", style: .default))
+    present(ac, animated: true)
+  }
 }
 
