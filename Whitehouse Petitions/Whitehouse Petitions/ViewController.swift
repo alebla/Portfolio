@@ -29,16 +29,9 @@ class ViewController: UITableViewController {
       urlString = "https://api.whitehouse.gov/v1/petitions.json?signatureCountFloor=10000&limit=100"
     }
     
-    if let url = URL(string: urlString) {
-      if let data = try? String(contentsOf: url) {
-        let json = JSON.parse(data)
-        
-        if json["metadata"]["responseInfo"]["status"].intValue == 200 {
-          parse(json: json)
-          
-        } else { showErrorAlert(title: "JSON Error", message: "Something is wrong with the json data.") }
-      } else { showErrorAlert(title: "URL Error", message: "The provided url is corrupted.") }
-    }else { showErrorAlert(title: "Improper String", message: "The string provided is not in proper URL format.") }
+    DispatchQueue.global(.userInitiated).async { [unowned self] in
+      
+    }
     
   }
   
