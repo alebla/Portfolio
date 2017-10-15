@@ -13,14 +13,14 @@ class ViewController: UITableViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    loadJSON()
+    performSelector(inBackground: #selector(loadJSON), with: nil)
     
     title = "Petitions"
   }
   
   //MARK: JSON Parsing
   
-  func loadJSON() {
+  @objc func loadJSON() {
     let urlString: String
     
     if navigationController?.tabBarItem.tag == 0 {
@@ -29,10 +29,17 @@ class ViewController: UITableViewController {
       urlString = "https://api.whitehouse.gov/v1/petitions.json?signatureCountFloor=10000&limit=100"
     }
     
-    DispatchQueue.global(.userInitiated).async { [unowned self] in
-      
+    if let url = URL(string: urlString) {
+      if let data = try? String(contentsOf: url) {
+        let json = JSON.parse(data)
+        
+        if json["metadata"]["responseInfo"]["status"].intValue == 200 {
+          self.parse(json: json)
+          return
+        }
+      }
     }
-    
+    performSelector(onMainThread: #selector(showErrorAlert(title:message:)), with: nil, waitUntilDone: false)
   }
   
   func parse(json: JSON) {
@@ -45,7 +52,7 @@ class ViewController: UITableViewController {
       
       petitions.append(obj)
     }
-    tableView.reloadData()
+    tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
   }
   
   //MARK: TableView Methods
@@ -70,11 +77,11 @@ class ViewController: UITableViewController {
   }
   
   //MARK: Error Handling
-  
-  func showErrorAlert(title: String, message: String) {
+  // to do!! Does not show a title or message
+  @objc func showErrorAlert(title: String, message: String) {
     let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
     ac.addAction(UIAlertAction(title: "OK", style: .default))
-    present(ac, animated: true)
+    self.present(ac, animated: true)
   }
 }
 
