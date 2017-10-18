@@ -11,18 +11,24 @@ import UIKit
 class ViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
   var people = [Person]()
+  
 
   override func viewDidLoad() {
     super.viewDidLoad()
     navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
+    
+    collectionView?.backgroundColor = UIColor.cyan
+    
+    
+    // Dummy Data
+//    people = [
+//      Person(name: "Bob", image: ""),
+//      Person(name: "Rick", image: ""),
+//      Person(name: "Bill", image: "")
+//    ]
   }
   
   @objc func addNewPerson() {
-    
-    let ac = UIAlertController(title: "Name that Face", message: "Type in a name for the face.", preferredStyle: .alert)
-    ac.addTextField()
-    ac.addAction(UIAlertAction(title: "Submit", style: .default))
-    
     let picker = UIImagePickerController()
     picker.allowsEditing = true
     picker.delegate = self
@@ -59,6 +65,23 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
   
   //MARK: CollectionView methods
   
+  override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let person = people[indexPath.item]
+    
+    let ac = UIAlertController(title: "Name that Face", message: "Type a name for the face", preferredStyle: .alert)
+    ac.addTextField()
+    
+    ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+    
+    let submit = UIAlertAction(title: "Submit", style: .default) { [unowned self, ac] _ in
+      person.name = ac.textFields![0].text!
+      self.collectionView?.reloadData()
+    }
+    ac.addAction(submit)
+    
+    present(ac, animated: true)
+  }
+  
   override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return people.count
   }
@@ -73,10 +96,10 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
     let path = getsDocumentsDirectory().appendingPathComponent(person.image)
     cell.imageView.image = UIImage(contentsOfFile: path.path)
     
-    cell.imageView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
-    cell.imageView.layer.borderWidth = 2
-    cell.imageView.layer.cornerRadius = 3
-    cell.layer.cornerRadius = 7
+    cell.imageView.layer.borderColor = UIColor.lightGray.cgColor
+    cell.imageView.layer.borderWidth = 5
+    cell.imageView.layer.cornerRadius = 25
+    cell.imageView.clipsToBounds = true
     
     return cell
   }
