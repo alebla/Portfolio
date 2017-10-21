@@ -9,6 +9,14 @@
 import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    var scoreLabel: SKLabelNode!
+    
+    var score = 0 {
+        didSet {
+            scoreLabel.text = "Score: \(score)"
+        }
+    }
+    
     override func didMove(to view: SKView) {
         buildScene()
     }
@@ -45,6 +53,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         background.blendMode = .replace
         background.zPosition = -1
         addChild(background)
+        
+        scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        scoreLabel.text = "Score: 0"
+        scoreLabel.horizontalAlignmentMode = .right
+        scoreLabel.position = CGPoint(x: 640, y: 320)
+        addChild(scoreLabel)
         
         makeSlot(at: CGPoint(x: 83, y: 0), isGood: true)
         makeSlot(at: CGPoint(x: 249, y: 0), isGood: false)
@@ -127,12 +141,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func collisionBetween(ball: SKNode, object: SKNode) {
         if object.name == "good" {
             destroy(ball: ball)
+            score += 10
         }else if object.name == "bad" {
             destroy(ball: ball)
+            score -= 10
         }
     }
     
     func destroy(ball: SKNode) {
+        let pos = ball.position
+        let fire = SKSpriteNode(fileNamed: "Fire")
+        fire!.position = pos
         ball.removeFromParent()
+        addChild(fire!)
     }
 }
