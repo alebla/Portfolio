@@ -24,6 +24,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
             ball.physicsBody!.restitution = 0.4
             ball.physicsBody!.contactTestBitMask = ball.physicsBody!.collisionBitMask
+            ball.zPosition = 2
+            
+//            let fire = SKSpriteNode(fileNamed: "Fire")
+//            fire?.zPosition = 0
+//            ball.childNode(withName: "Fire")?.zPosition = 0
+//            ball.addChild(fire!)
             
             physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
             addChild(ball)
@@ -81,6 +87,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         slotGlow.position = position
+        slotGlow.zPosition = 3
         slotGlow.size = CGSize(width: slotGlow.size.width / 1.5, height: slotGlow.size.height / 1.5)
         addChild(slotGlow)
         
@@ -101,6 +108,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     //MARK: Collision Detection & Handling
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        guard let nodeA = contact.bodyA.node else { return }
+        guard let nodeB = contact.bodyB.node else { return }
+        
+        if nodeA.name == "ball" {
+            collisionBetween(ball: contact.bodyA.node!, object: contact.bodyB.node!)
+        } else if nodeB.name == "ball" {
+            collisionBetween(ball: contact.bodyB.node!, object: contact.bodyA.node!)
+        }
+    }
+    
+    func didEnd(_ contact: SKPhysicsContact) {
+        
+    }
     
     func collisionBetween(ball: SKNode, object: SKNode) {
         if object.name == "good" {
