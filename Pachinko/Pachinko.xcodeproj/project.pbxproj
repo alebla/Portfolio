@@ -14,9 +14,8 @@
 		3752730B1F9AD955009A99C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375273091F9AD955009A99C3 /* Main.storyboard */; };
 		3752730D1F9AD955009A99C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3752730C1F9AD955009A99C3 /* Assets.xcassets */; };
 		375273101F9AD955009A99C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3752730E1F9AD955009A99C3 /* LaunchScreen.storyboard */; };
-		375273591F9B46D9009A99C3 /* Fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 375273571F9B46D9009A99C3 /* Fire.sks */; };
-		3752735A1F9B46D9009A99C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 375273581F9B46D9009A99C3 /* Assets.xcassets */; };
 		3780AB4D1F9C595C0091C66C /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3780AB4C1F9C595C0091C66C /* Helper.swift */; };
+		3780AB511F9C7C190091C66C /* FireParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3780AB501F9C7C180091C66C /* FireParticles.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +28,8 @@
 		3752730C1F9AD955009A99C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3752730F1F9AD955009A99C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		375273111F9AD955009A99C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		375273571F9B46D9009A99C3 /* Fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Fire.sks; path = Pachinko/Assets.xcassets/Fire.sks; sourceTree = "<group>"; };
-		375273581F9B46D9009A99C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Pachinko/Assets.xcassets/Assets.xcassets; sourceTree = "<group>"; };
 		3780AB4C1F9C595C0091C66C /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		3780AB501F9C7C180091C66C /* FireParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireParticles.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,8 +46,6 @@
 		375272F31F9AD955009A99C3 = {
 			isa = PBXGroup;
 			children = (
-				375273571F9B46D9009A99C3 /* Fire.sks */,
-				375273581F9B46D9009A99C3 /* Assets.xcassets */,
 				375272FE1F9AD955009A99C3 /* Pachinko */,
 				375272FD1F9AD955009A99C3 /* Products */,
 			);
@@ -66,6 +62,7 @@
 		375272FE1F9AD955009A99C3 /* Pachinko */ = {
 			isa = PBXGroup;
 			children = (
+				3780AB501F9C7C180091C66C /* FireParticles.sks */,
 				375272FF1F9AD955009A99C3 /* AppDelegate.swift */,
 				375273011F9AD955009A99C3 /* GameScene.sks */,
 				375273051F9AD955009A99C3 /* GameScene.swift */,
@@ -140,9 +137,8 @@
 			files = (
 				3752730B1F9AD955009A99C3 /* Main.storyboard in Resources */,
 				375273021F9AD955009A99C3 /* GameScene.sks in Resources */,
+				3780AB511F9C7C190091C66C /* FireParticles.sks in Resources */,
 				3752730D1F9AD955009A99C3 /* Assets.xcassets in Resources */,
-				375273591F9B46D9009A99C3 /* Fire.sks in Resources */,
-				3752735A1F9B46D9009A99C3 /* Assets.xcassets in Resources */,
 				375273101F9AD955009A99C3 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
