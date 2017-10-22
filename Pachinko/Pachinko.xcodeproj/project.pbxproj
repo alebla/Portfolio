@@ -16,6 +16,7 @@
 		375273101F9AD955009A99C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3752730E1F9AD955009A99C3 /* LaunchScreen.storyboard */; };
 		375273591F9B46D9009A99C3 /* Fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 375273571F9B46D9009A99C3 /* Fire.sks */; };
 		3752735A1F9B46D9009A99C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 375273581F9B46D9009A99C3 /* Assets.xcassets */; };
+		3780AB4D1F9C595C0091C66C /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3780AB4C1F9C595C0091C66C /* Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		375273111F9AD955009A99C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		375273571F9B46D9009A99C3 /* Fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Fire.sks; path = Pachinko/Assets.xcassets/Fire.sks; sourceTree = "<group>"; };
 		375273581F9B46D9009A99C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Pachinko/Assets.xcassets/Assets.xcassets; sourceTree = "<group>"; };
+		3780AB4C1F9C595C0091C66C /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				375273011F9AD955009A99C3 /* GameScene.sks */,
 				375273051F9AD955009A99C3 /* GameScene.swift */,
 				375273071F9AD955009A99C3 /* GameViewController.swift */,
+				3780AB4C1F9C595C0091C66C /* Helper.swift */,
 				375273091F9AD955009A99C3 /* Main.storyboard */,
 				3752730C1F9AD955009A99C3 /* Assets.xcassets */,
 				3752730E1F9AD955009A99C3 /* LaunchScreen.storyboard */,
@@ -154,6 +157,7 @@
 				375273061F9AD955009A99C3 /* GameScene.swift in Sources */,
 				375273081F9AD955009A99C3 /* GameViewController.swift in Sources */,
 				375273001F9AD955009A99C3 /* AppDelegate.swift in Sources */,
+				3780AB4D1F9C595C0091C66C /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
