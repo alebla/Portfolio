@@ -66,6 +66,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     if let cgimg = context.createCGImage(currentFilter.outputImage!, from: currentFilter.outputImage!.extent) {
       let processedImage = UIImage(cgImage: cgimg)
       imageView.image = processedImage
+    } else {
+      print("No picture!")
     }
   }
   
@@ -78,6 +80,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
   }
   
   @IBAction func intensityChanged(_ sender: UISlider) {
+    if imageView.image == nil { return }
     applyProcessing()
   }
   
