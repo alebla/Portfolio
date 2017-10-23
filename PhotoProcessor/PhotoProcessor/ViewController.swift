@@ -26,6 +26,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
   
   func buildUI() {
     title = "Photo Processor"
+    navigationController?.navigationBar.barStyle = .blackTranslucent
+    imageView.clipsToBounds = true
+    imageView.layer.cornerRadius = 5
+    imageView.layer.borderWidth = 3
+    imageView.layer.borderColor = UIColor.white.cgColor
     navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(importPicture))
     
     context = CIContext()
