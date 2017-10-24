@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -86,7 +86,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="save:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UlJ-A5-4pd"/>
+                                            <action selector="saveImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rDO-Ux-0Q3"/>
                                         </connections>
                                     </button>
                                 </subviews>
