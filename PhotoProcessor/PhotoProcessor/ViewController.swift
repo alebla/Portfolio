@@ -76,12 +76,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
   }
   
+  func changeFilter() {
+    
+  }
+  
+  func saveImage() {
+    
+  }
+  
   //MARK: IBActions
   
-  @IBAction func save(_ sender: UIButton) {
+  @IBAction func saveImage(_ sender: UIButton) {
+    saveImage()
   }
   
   @IBAction func changeFilter(_ sender: UIButton) {
+    changeFilter()
   }
   
   @IBAction func intensityChanged(_ sender: UISlider) {
