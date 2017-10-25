@@ -76,11 +76,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
   }
   
-  func changeFilter() {
-    
+  func setFilter(action: UIAlertAction) {
+    guard currentImage != nil else { return }
+    currentFilter = CIFilter(name: action.title!)
+    currentFilter.setValue(CIImage(image: currentImage), forKey: kCIInputImageKey)
+    applyProcessing()
   }
   
   func saveImage() {
+    guard imageView.image != nil else { return }
+    UIImageWriteToSavedPhotosAlbum(imageView.image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+  }
+  
+  @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
     
   }
   
@@ -91,7 +99,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
   }
   
   @IBAction func changeFilter(_ sender: UIButton) {
-    changeFilter()
+    let ac = UIAlertController(title: "Choose Filter", message: nil, preferredStyle: .actionSheet)
+    ac.addAction(UIAlertAction(title: "CIBumpDistortion", style: .default, handler: setFilter))
+    ac.addAction(UIAlertAction(title: "CIGaussianBlur", style: .default, handler: setFilter))
+    ac.addAction(UIAlertAction(title: "CIPixellate", style: .default, handler: setFilter))
+    ac.addAction(UIAlertAction(title: "CISepiaTone", style: .default, handler: setFilter))
+    ac.addAction(UIAlertAction(title: "CITwirlDistortion", style: .default, handler: setFilter))
+    ac.addAction(UIAlertAction(title: "CIUnsharpMask", style: .default, handler: setFilter))
+    ac.addAction(UIAlertAction(title: "CIVignette", style: .default, handler: setFilter))
+    ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+    present(ac, animated: true)
   }
   
   @IBAction func intensityChanged(_ sender: UISlider) {
