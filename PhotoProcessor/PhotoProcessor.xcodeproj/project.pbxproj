@@ -13,6 +13,7 @@
 		37A7A99E1F9CC698000DE6E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A7A99C1F9CC698000DE6E6 /* Main.storyboard */; };
 		37A7A9A01F9CC698000DE6E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37A7A99F1F9CC698000DE6E6 /* Assets.xcassets */; };
 		37A7A9A31F9CC698000DE6E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A7A9A11F9CC698000DE6E6 /* LaunchScreen.storyboard */; };
+		37E3C7941FAEAC89001C5EFF /* aBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E3C7931FAEAC89001C5EFF /* aBHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		37A7A99F1F9CC698000DE6E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37A7A9A21F9CC698000DE6E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		37A7A9A41F9CC698000DE6E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37E3C7931FAEAC89001C5EFF /* aBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aBHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				37A7A9981F9CC698000DE6E6 /* AppDelegate.swift */,
 				37A7A99A1F9CC698000DE6E6 /* ViewController.swift */,
+				37E3C7931FAEAC89001C5EFF /* aBHelper.swift */,
 				3732BD6B1F9DC869000B4796 /* CustomButton.swift */,
 				37A7A99C1F9CC698000DE6E6 /* Main.storyboard */,
 				37A7A99F1F9CC698000DE6E6 /* Assets.xcassets */,
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37E3C7941FAEAC89001C5EFF /* aBHelper.swift in Sources */,
 				37A7A99B1F9CC698000DE6E6 /* ViewController.swift in Sources */,
 				37A7A9991F9CC698000DE6E6 /* AppDelegate.swift in Sources */,
 				3732BD6C1F9DC869000B4796 /* CustomButton.swift in Sources */,
@@ -281,6 +285,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 76SXX9BLLZ;
 				INFOPLIST_FILE = PhotoProcessor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Dr3amStr3am.PhotoProcessor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -296,6 +301,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 76SXX9BLLZ;
 				INFOPLIST_FILE = PhotoProcessor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Dr3amStr3am.PhotoProcessor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
